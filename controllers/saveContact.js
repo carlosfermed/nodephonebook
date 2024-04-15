@@ -1,54 +1,55 @@
-const formidable = require("formidable");
+const formidable = require("formidable").IncomingForm;
 const path = require("node:path");
 
-// Comenzamos con el valor 4 ya que hemos introducido 3 contactos por defecto.
-let idCount = 4;
 
 function saveContact(req, res, contacts, redirect) {
 
-  console.log('os.homedir :>> ', path.dirname(process.argv[1]));
-  const form = new formidable.IncomingForm({                          // 'formidable' ya maneja los eventos "data" y "end".
-    uploadDir: `${path.dirname(process.argv[1])}\\public\\img`,       // Directorio de guardado de las imagenes.
-    allowEmptyFiles: true,                                            // Permite que no sea necesario subir una imagen.
-    minFileSize: 0                                                    // Al no ser obligatorio subir imagenes es necesario anotar 0 en esta propiedad.
+  const form = new formidable({                                       // "Formidable" handles the "data" and "end" events.
+    uploadDir: `${path.dirname(process.argv[1])}\\public\\img`,       // Directory for saving images.
+    allowEmptyFiles: true,                                            // Makes uploading an image optional.
+    minFileSize: 0                                                    // Since it is not mandatory to upload images, it is necessary to write 0 in this property.
   });
   try {
-    form.parse(req, (err, contacto, files) => {
+    form.parse(req, (err, contact, files) => {
       if (err) {
         console.log('err :>> ', err);
         res.writeHead(500, { 'Content-Type': 'text/plain' });
         res.end('Error interno del servidor');
         return;
       }
-      if (Object.keys(files).length > 0) {
+      if (checkName(contact.name[0], contacts)) {
         const contactToAdd = {
-          id: idCount++,
-          name: contacto.name[0],
-          phone: contacto.phone[0],
-          image: files.image[0].newFilename
+          id: addId(contacts),
+          name: contact.name[0],
+          phone: contact.phone[0],
+          image: Boolean(Object.values(files)[0][0].size) ? files.image[0].newFilename : "default_image"
         }
-        console.log("____________________")
-        console.log('contactToAdd con foto :>> ', contactToAdd);
+        console.log(">>>>>> contact created <<<<<<")
         contacts.push(contactToAdd);
         redirect(res);
       }
       else {
-        const contactToAdd = {
-          id: idCount++,
-          name: contacto.name[0],
-          phone: contacto.phone[0],
-          image: "defaultImage",
-        }
-        contacts.push(contactToAdd);
-        redirect(res);
+        res.writeHead(409, { 'Content-Type': 'text/plain' });
+        res.end("The name is already in use");
+        return
       }
     });
   }
   catch (err) {
     console.log('err :>> ', err);
-    res.end()
+    res.end();
     return;
   }
+}
+
+const addId = (contacts) => {
+  let maxId = Math.max(...contacts.map(contact => contact.id))
+  maxId += 1;
+  return maxId;
+}
+
+const checkName = (contactName, contacts) => {
+  return !contacts.find(contact => contact.name === contactName)
 }
 
 module.exports = saveContact;
