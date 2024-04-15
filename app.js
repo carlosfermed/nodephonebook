@@ -1,7 +1,8 @@
 const http = require("node:http");
 let contacts = require("./data/data");
-const {getList, getContactForm, saveContact} = require("./controllers");
-const {deleteContact, redirectToMainPage} = require("./util");
+const { getList, getContactForm, saveContact } = require("./controllers");
+const deleteContact = require("./util/delete");
+const redirectToMainPage = require("./util/redirect");
 const { readFileSync } = require("node:fs");
 
 const PORT = process.env.PORT || 3000;

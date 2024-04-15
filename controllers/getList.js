@@ -19,7 +19,7 @@ function getList(data) {
             <th>Image</th><th>ID</th><th>Name</th><th>Phone</th><th>Delete</th>            
         </tr>
         ${data.map(createContactItem).join('')}
-        <tr><td><a href="/new" id="addButton">add</a></td></tr>
+        <tr><td><a href="/new">add</a></td></tr>
       </table>
        
     </body>
@@ -36,7 +36,7 @@ function sortContacts(contacts) {
 
 function createContactItem(contact) {
   return `<tr>
-            <td><img src="public/img/${contact.image}" alt="Sin imagen"></img></td>
+            <td><img src="public/img/${contact.image}" alt="personal image" /></td>
             <td>${contact.id}</td><td>${contact.name}</td><td>${contact.phone}</td><td><a href="/delete/${contact.id}">delete</a>
           </tr>`;
 }

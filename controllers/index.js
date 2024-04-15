@@ -1,7 +1,7 @@
 
 const getList = require("./getList");
 const getContactForm = require("./getContactForm");
-const saveContact = require("./postSaveContact");
+const saveContact = require("./saveContact");
 
 module.exports = {
     getList,
