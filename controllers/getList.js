@@ -36,7 +36,7 @@ function sortContacts(contacts) {
 
 function createContactItem(contact) {
   return `<tr>
-            <td><img src="public/img/${contact.image}" alt="personal image" /></td>
+            <td><img src="public/img/${contact.image}" alt="p. img" /></td>
             <td>${contact.id}</td><td>${contact.name}</td><td>${contact.phone}</td><td><a href="/delete/${contact.id}">delete</a>
           </tr>`;
 }

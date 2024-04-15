@@ -15,7 +15,7 @@ table {
 }
 td {
   width: 80px;
-  padding-left: 5px;
+  padding: 0 5px;
 }
 tr:nth-child(2n) td {
   background-color: lightblue;
