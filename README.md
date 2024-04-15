@@ -16,5 +16,5 @@ The project is an application that simulates a phonebook, where users can store 
 4. When adding a new contact, you can upload a customized image using the provided form. If no image is provided, a default image will be automatically assigned to the contact.
 5. Contact data will be stored in the system cache and will be available for querying and management while the application is running.
 
-## Estado del proyecto:
-El proyecto está activo y en estado de mejora continua en caso de que tengas alguna sugerencia.
+## Project Status:
+The project is active and in a state of continuous improvement. If you have any suggestions, they are welcome!
