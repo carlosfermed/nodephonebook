@@ -5,7 +5,7 @@ The project is an application that simulates a phonebook, where users can store 
 ## Installation:
 
 1. Clone the repository from GitHub: `git clone <URL_of_the_repository>`
-2. Navigate to the project directory: `cd phonebook`
+2. Navigate to the project directory: `cd nodephonebook`
 3. Install project dependencies: `npm install`
 
 ## Usage:
