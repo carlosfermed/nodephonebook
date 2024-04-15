@@ -1,33 +1,27 @@
 
 body {
     text-align: center;
+    background-color: aliceblue;
 }
-
 h1 {
     font-family: 'Courier New', Courier, monospace;
 }
-
 table {
     margin: auto;
     text-align: left;
 }
-
 td {
     width: 80px;
 }
-
 tr:first-child th {
     font-weight: bold;
 }
-
 tr:nth-child(2n) td {
     background-color: lightblue;
 }
-
 tr:last-child, td:last-child {
     text-align: center;
 }
-
 img {
     width: 40px;
     height: 40px;

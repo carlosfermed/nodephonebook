@@ -1,5 +1,5 @@
 
-function getContactForm(contacts) {
+function getContactForm() {
 
     return `
         <!DOCTYPE html>

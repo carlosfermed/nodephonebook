@@ -4,7 +4,8 @@
   "description": "Store your contacts in a minimalist phonebook",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "dev": "nodemon app.js",
+    "start": "node app.js"
   },
   "keywords": [],
   "author": "carlosfermed",

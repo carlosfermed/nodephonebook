@@ -15,7 +15,7 @@ http.createServer((req, res) => {
         redirectToMainPage(res);
     }
     else if (urlParts.includes("new")) {                            // Servir formulario para añadir contacto.
-        res.end(getContactForm(contacts));
+        res.end(getContactForm());
     }
     
     else if (urlParts.includes("save") && req.method === "POST") {  // Añadir contacto a la agenda.
