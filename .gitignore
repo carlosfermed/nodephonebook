@@ -1,3 +1,4 @@
 index.html
 /node_modules
 /public/img/*
+!/public/img/default_image

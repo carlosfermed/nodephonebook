@@ -1,5 +1,5 @@
-const formidable = require("formidable");                           
-const path = require("node:path");                           
+const formidable = require("formidable");
+const path = require("node:path");
 
 // Comenzamos con el valor 4 ya que hemos introducido 3 contactos por defecto.
 let idCount = 4;
@@ -15,8 +15,8 @@ function saveContact(req, res, contacts, redirect) {
   try {
     form.parse(req, (err, contacto, files) => {
       if (err) {
-        res.writeHead(500, { 'Content-Type': 'text/plain' });
         console.log('err :>> ', err);
+        res.writeHead(500, { 'Content-Type': 'text/plain' });
         res.end('Error interno del servidor');
         return;
       }
@@ -27,7 +27,7 @@ function saveContact(req, res, contacts, redirect) {
           phone: contacto.phone[0],
           image: files.image[0].newFilename
         }
-        console.log("^^^^^^^^^^^^^^^^^^")
+        console.log("____________________")
         console.log('contactToAdd con foto :>> ', contactToAdd);
         contacts.push(contactToAdd);
         redirect(res);
@@ -37,7 +37,7 @@ function saveContact(req, res, contacts, redirect) {
           id: idCount++,
           name: contacto.name[0],
           phone: contacto.phone[0],
-          image: ""
+          image: "defaultImage",
         }
         contacts.push(contactToAdd);
         redirect(res);
